@@ -119,8 +119,8 @@ def get_html(url):
 
 def main():
     urls = []
-    for idx in range(0, 3):
-        urls.append('https://www.zhihu.com/api/v4/members/Yefeng7/articles?include=data%5B*%5D.comment_count%2Csuggest_edit%2Cis_normal%2Cthumbnail_extra_info%2Cthumbnail%2Ccan_comment%2Ccomment_permission%2Cadmin_closed_comment%2Ccontent%2Cvoteup_count%2Ccreated%2Cupdated%2Cupvoted_followees%2Cvoting%2Creview_info%2Cis_labeled%2Clabel_info%3Bdata%5B*%5D.author.badge%5B%3F(type%3Dbest_answerer)%5D.topics&offset={}&limit={}&sort_by=created'.format(idx * 20, (idx + 1) * 20))
+    for idx in range(0, 29):
+        urls.append('https://zhuanlan.zhihu.com/api/columns/pinjinrong/articles?include=data%5B%2A%5D.admin_closed_comment%2Ccomment_count%2Csuggest_edit%2Cis_title_image_full_screen%2Ccan_comment%2Cupvoted_followees%2Ccan_open_tipjar%2Ccan_tip%2Cvoteup_count%2Cvoting%2Ctopics%2Creview_info%2Cauthor.is_following%2Cis_labeled%2Clabel_info&limit=10&offset={}'.format((idx + 1) * 20))
 
     contents = []
     for url in urls:
@@ -136,7 +136,7 @@ def main():
         html = get_html(content['url'])
         save_pdf(html, '{}_zhihu.pdf'.format(content['title']))
 
-    merge_pdf(contents, '社长有点野.pdf')
+    merge_pdf(contents, '笨虎聊金融.pdf')
 
 
 if __name__ == '__main__':
